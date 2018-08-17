@@ -1,0 +1,46 @@
+ActionBar{
+    background-color: white;
+}
+
+Page{
+    size: auto;
+    background-color: white;
+}
+
+.header{
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+    justify-content: center;
+}
+
+flexboxlayout{
+    vertical-align: center;
+    justify-content: center;
+}
+
+.btn-primary{
+    background-color: black;
+    color: white;
+    height: 50px;
+    margin-left: 175px;
+    margin-right: 175px;
+    border-radius: 200 200 200 200;
+    font-size: 10px;
+}
+
+TextField{
+    background-color: white;
+    margin-left: 25px;
+    margin-right: 100px;
+    margin-bottom: 30px;
+    border-top-left-radius: 60;
+    border-top-right-radius: 60;
+    border-bottom-left-radius: 60;
+    border-bottom-right-radius: 60;
+}
+
+.btn-primary-transparent{
+    color: black;
+    font-size: 20px;
+}

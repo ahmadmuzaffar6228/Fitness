@@ -1,0 +1,4 @@
+#Thu Aug 16 11:34:58 PKT 2018
+base.0=D\:\\NativeScriptApplications\\Fitness\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex

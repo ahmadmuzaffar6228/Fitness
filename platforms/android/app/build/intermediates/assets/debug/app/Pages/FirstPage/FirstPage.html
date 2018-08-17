@@ -1,0 +1,50 @@
+<Page>
+
+    <ActionBar title=""></ActionBar>
+
+    <ScrollView>
+
+        <FlexboxLayout>
+
+            <StackLayout>
+                
+                <Image src="~/Images/logo.png"></Image>
+    
+                <!--******************************************************-->
+    
+                <Label class="header" text="FITNESS"></Label>
+    
+                <!--******************************************************-->
+    
+                <TextField #Username class="input-field" id="username" hint="Username" [(ngModel)]="user.username" autocapitalizationtype="none"
+                    autocorrect="false"></TextField>
+    
+                <!--******************************************************-->
+    
+                <TextField #EmailAddress *ngIf="!isLogging" id="emailAddress" class="input-field" hint="Email Address" [(ngModel)]="user.email"
+                    autocapitalizationtype="none" autocorrect="false" keyboardType="email"></TextField>
+    
+                <!--******************************************************-->
+    
+                <TextField #Password class="input-field" id="password" hint="Password" secure="true" [(ngModel)]="user.password"></TextField>
+    
+                <!--******************************************************-->
+    
+                <Button #Login [text]="isLogging ? 'Login' : 'Sign Up'" class="btn        btn-primary" (tap)="submit()"></Button>
+    
+                <!--******************************************************-->
+    
+                <Label class="login-label sign-up-label" [isEnabled]="!tapped" (tap)="toggleForm()" style="color: white;">
+                    <FormattedString>
+                        <Span [text]="isLogging ? 'Don’t have an account? ' : 'Back to  Login'"></Span>
+                        <Span [text]="isLogging ? 'Sign up' : ''" class="bold" style="color: blueviolet;font-size: 18px;"></Span>
+                    </FormattedString>
+                </Label>
+    
+            </StackLayout>
+
+        </FlexboxLayout>
+
+    </ScrollView>
+
+</Page>

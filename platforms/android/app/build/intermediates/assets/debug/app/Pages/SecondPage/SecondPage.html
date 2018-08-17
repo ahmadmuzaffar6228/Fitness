@@ -1,0 +1,232 @@
+<Page>
+
+    <ActionBar [title]="userData.email" style="color: black">
+
+        <ActionItem *ngIf="hideIcons" (tap)="saveDetails()" android.systemIcon="ic_menu_save"></ActionItem>
+
+        <ActionItem *ngIf="hideIcons" (tap)="clearDetails()" android.systemIcon="ic_menu_close_clear_cancel"></ActionItem>
+
+        <ActionItem *ngIf="!hideIcons" (tap)="done()" android.systemIcon="ic_menu_edit"></ActionItem>
+
+        <ActionItem *ngIf="!hideIcons" (tap)="logout()" text="Log Out" android.position="popup"></ActionItem>
+
+    </ActionBar>
+
+    <!--******************************************************-->
+
+    <TabView androidTabsPosition="bottom">
+
+        <!--***************************Home***************************-->
+
+        <StackLayout *tabItem="{title: 'Home', iconSource: '~/Images/home.png'}">
+
+            <StackLayout style="height: 50;background-color: white">
+
+                <Image src="~/Images/home.png" style="height: 50; width: 50;"></Image>
+
+            </StackLayout>
+
+
+
+            <ScrollView orientation="vertical">
+
+                <FlexboxLayout style="height: auto;">
+
+                    <StackLayout>
+
+                        <StackLayout verticalAlign="center" style="margin-left:0;margin-right: 0px;width: 500px;justify-content:center;background-color:rgb(22, 0, 43);margin-bottom: 10px;">
+
+                            <Label text="Fitness Percentage" class="header" style="font-size: 30px;color: white"></Label>
+
+                            <Progress [value]="progressValue" [color]="barColor" backgroundColor="#FFFF66" (valueChanged)="onValueChanged($event)" maxValue="100"
+                                class="m-10"></Progress>
+
+                            <Label [text]="progressPercentage" class="header" style="font-size: 30px;color: white;margin-top: 10px;"></Label>
+
+                            <Label [text]="helpString" style="font-size: 15px;color: white;margin-top: 10px;margin-bottom: 25px;"></Label>
+
+                        </StackLayout>
+
+                        <StackLayout style="margin-left:0;margin-right: 0px;width: 500px;justify-content:center;background-color:rgb(22, 0, 43);margin-bottom: 0px;">
+
+                            <Label text="Workouts" class="header" style="font-size: 30px;color: white"></Label>
+
+                            <StackLayout>
+
+                                <Label text="Arm Workouts" class="header" style="font-size: 20px;color: white"></Label>
+
+                                <Image src="~/Images/arms.jpg" style="height: 450px;width: 450px;" (tap)="videos(1)"></Image>
+
+                            </StackLayout>
+
+                            <StackLayout>
+                            
+                                <Label text="Leg Workouts" class="header" style="font-size: 20px;color: white"></Label>
+                            
+                                <Image src="~/Images/legs.jpg" style="height: 450px;width: 450px;" (tap)="videos(2)"></Image>
+                            
+                            </StackLayout>
+
+                            <StackLayout>
+                            
+                                <Label text="Back Workouts" class="header" style="font-size: 20px;color: white"></Label>
+                            
+                                <Image src="~/Images/back.jpg" style="height: 450px;width: 450px;" (tap)="videos(3)"></Image>
+                            
+                            </StackLayout>
+
+                            <StackLayout>
+                            
+                                <Label text="Abs Workouts" class="header" style="font-size: 20px;color: white"></Label>
+                            
+                                <Image src="~/Images/abs.jpg" style="height: 450px;width: 450px;" (tap)="videos(4)"></Image>
+                            
+                            </StackLayout>
+
+                            <StackLayout>
+                            
+                                <Label text="Shoulder Workouts" class="header" style="font-size: 20px;color: white"></Label>
+                            
+                                <Image src="~/Images/shoulders.jpg" style="height: 450px;width: 450px;" (tap)="videos(5)"></Image>
+                            
+                            </StackLayout>
+
+                            <StackLayout>
+                            
+                                <Label text="Chest Workouts" class="header" style="font-size: 20px;color: white"></Label>
+                            
+                                <Image src="~/Images/chest.jpg" style="height: 450px;width: 450px;" (tap)="videos(6)"></Image>
+                            
+                            </StackLayout>
+
+                        </StackLayout>
+
+                    </StackLayout>
+
+                </FlexboxLayout>
+
+            </ScrollView>
+
+        </StackLayout>
+
+        <!--***************************TimeLine***************************-->
+
+        <StackLayout *tabItem="{title: 'TimeLine', iconSource: '~/Images/timeline.png'}">
+
+            <!--******************************************************-->
+
+            <StackLayout style="height: 50;background-color:white;">
+
+                <Image src="~/Images/timeline.png" style="height: 50; width: 50;"></Image>
+
+            </StackLayout>
+
+            <!--*************************Scroll View*****************************-->
+
+            <ScrollView orientation="vertical">
+
+                <FlexboxLayout style="height: auto;">
+
+                    <StackLayout>
+
+                        <!--*****************************Layout 1*************************-->
+
+                        <StackLayout style="margin-left:0;margin-right: 0px;width: 500px;justify-content:center;background-color:rgb(22, 0, 43);margin-bottom: 10px;">
+
+                            <Label text="IMAGE" class="header" style="color:white;font-size: 20px;"></Label>
+
+                            <Image src="{{ userData.image }}" class="imageCss" style="width: 100;height: 100;margin-bottom: 15px;border-bottom-left-radius: 100;border-bottom-right-radius: 100;border-top-left-radius: 100;border-top-right-radius: 100;"></Image>
+
+                            <!--******************************************************-->
+
+                            <StackLayout orientation="horizontal" width="500px">
+
+                                <Button *ngIf="imageIsOn" text="Take Image" (tap)="takeImage()" class="btn btn-primary" style="margin-left: 120px;margin-right: 0px;width: 120px;margin-bottom: 20px;"></Button>
+
+                                <Button *ngIf="imageIsOn" text="Upload Image" (tap)="uploadImage()" class="btn btn-primary" style="margin-left: 0px;width: 120px;margin-bottom: 20px;"></Button>
+
+                                <Button *ngIf="!imageIsOn" [isEnabled]="hideIcons" text="Change Image" (tap)="toggleImage()" class="btn btn-primary" style="margin-left: 90px;margin-right: 0px;margin-bottom: 20px;width: 150px;"></Button>
+
+                                <Button *ngIf="!imageIsOn" [isEnabled]="hideIcons" text="Remove Image" (tap)="removeImage()" class="btn btn-primary" style="margin-left: 0px;margin-bottom: 20px;width: 150px;"></Button>
+
+                            </StackLayout>
+
+                            <!--******************************************************-->
+
+                        </StackLayout>
+
+                        <!--*****************************Layout 2*************************-->
+
+                        <StackLayout style="margin-left:0;width: 500px;background-color:rgb(22, 0, 43);">
+
+                            <Label text="DETAILS" class="header" style="color:white;font-size: 18px;"></Label>
+
+                            <Label text="UserName" class="h3" style="color:white;margin-left: 25px;"></Label>
+
+                            <TextField textWrap="true" editable="false" [text]="userData.username"></TextField>
+
+                            <Label text="Email" class="h3" style="color:white;margin-left: 25px;"></Label>
+
+                            <TextField textWrap="true" editable="false" [text]="userData.email"></TextField>
+
+                            <Label text="Age" class="h3" style="color:white;margin-left: 25px;"></Label>
+
+                            <TextField #age [editable]="hideIcons" id="age" [(ngModel)]="userData.age"></TextField>
+
+                            <Label text="Gender" class="h3" style="color:white;margin-left: 25px;"></Label>
+
+                            <TextField #gender [editable]="hideIcons" id="age" [(ngModel)]="userData.gender"></TextField>
+
+                            <Label text="Height" class="h3" style="color:white;margin-left: 25px;"></Label>
+
+                            <TextField #height [editable]="hideIcons" id="height" [(ngModel)]="userData.height"></TextField>
+
+                            <Label text="Weight" class="h3" style="color:white;margin-left: 25px;"></Label>
+
+                            <TextField #weight [editable]="hideIcons" id="weight" [(ngModel)]="userData.weight"></TextField>
+
+                            <Label text="Arm Size" class="h3" style="color:white;margin-left: 25px;"></Label>
+
+                            <TextField #armSize [editable]="hideIcons" id="armSize" [(ngModel)]="userData.armSize"></TextField>
+
+                            <Label text="Thigh Size" class="h3" style="color:white;margin-left: 25px;"></Label>
+
+                            <TextField #thighSize [editable]="hideIcons" id="thighSize" [(ngModel)]="userData.thighSize"></TextField>
+
+                            <Label text="Chest Size" class="h3" style="color:white;margin-left: 25px;"></Label>
+
+                            <TextField #chestSize [editable]="hideIcons" id="chestSize" [(ngModel)]="userData.chestSize"></TextField>
+
+                        </StackLayout>
+
+                        <!--**************************Layout 3****************************-->
+
+                    </StackLayout>
+
+                </FlexboxLayout>
+
+            </ScrollView>
+
+        </StackLayout>
+
+        <!--***************************Settings***************************-->
+
+        <StackLayout *tabItem="{title: 'Settings', iconSource: '~/Images/settings.png'}">
+
+            <StackLayout style="height: 50;background-color: white">
+
+                <Image src="~/Images/settings.png" style="height: 50; width: 50;"></Image>
+
+            </StackLayout>
+
+            <!--******************************************************-->
+
+            <Button class="btn btn-primary-transparent" text="CHANGE CREDENTIALS" (tap)="navigateToChangeCredentialsPage()"></Button>
+
+        </StackLayout>
+
+        <!--******************************************************-->
+
+    </TabView>
+
+</Page>

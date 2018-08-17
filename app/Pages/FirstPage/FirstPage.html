@@ -1,0 +1,83 @@
+<Page>
+
+    <ActionBar title=""></ActionBar>
+
+    <ScrollView>
+
+        <FlexboxLayout height="auto">
+
+            <StackLayout width="500px" height="auto">
+                
+                <Image src="~/Images/logo.png" style="margin-top: 20px;"></Image>
+    
+                <!--******************************************************-->
+    
+                <Label class="header" text="FITNESS"></Label>
+    
+                <!--******************************************************-->
+    
+                <TextField #Username class="input-field" id="username" hint="Username" [(ngModel)]="userData.username" autocapitalizationtype="none"
+                    autocorrect="false"></TextField>
+    
+                <!--******************************************************-->
+    
+                <TextField #EmailAddress *ngIf="!isLogging" id="emailAddress" class="input-field" hint="Email Address" [(ngModel)]="userData.email"
+                    autocapitalizationtype="none" autocorrect="false" keyboardType="email"></TextField>
+    
+                <!--******************************************************-->
+    
+                <TextField #Password class="input-field" id="password" hint="Password" secure="true" [(ngModel)]="userData.password"></TextField>
+    
+                <!--******************************************************-->
+
+                <TextField #age *ngIf="!isLogging" id="age" class="input-field" hint="Age" [(ngModel)]="userData.age"></TextField>
+
+                <!--******************************************************-->
+
+                <TextField #gender *ngIf="!isLogging" id="gender" class="input-field" hint="Gender" [(ngModel)]="userData.gender"></TextField>
+
+                <!--******************************************************-->
+
+                <StackLayout *ngIf="!isLogging" orientation="horizontal">
+
+                    <!--******************************************************-->
+
+                    <TextField #foot *ngIf="!isLogging" id="foot" class="input-field" hint="Height (Foot)" [(ngModel)]="userData.foot" style="height: 60px;width: 175px;margin-right: 0px"></TextField>
+
+                    <!--******************************************************-->
+                    
+                    <TextField #inches *ngIf="!isLogging" id="inches" class="input-field" hint="Inches" [(ngModel)]="userData.inches" style="width: 175px;height: 60px;margin-left: 0px"></TextField>
+
+                    <!--******************************************************-->
+
+                </StackLayout>
+
+                <!--******************************************************-->
+
+                <TextField #weight *ngIf="!isLogging" id="weight" class="input-field" hint="Weight" [(ngModel)]="userData.weight"></TextField>
+
+                <!--******************************************************-->
+    
+                <Button #Login [text]="isLogging ? 'Login' : 'Sign Up'" class="btn btn-primary" (tap)="submit()"></Button>
+    
+                <!--******************************************************-->
+    
+                <Label class="login-label sign-up-label" [isEnabled]="!tapped" (tap)="toggleForm()" style="color: white;">
+
+                    <FormattedString>
+
+                        <Span [text]="isLogging ? 'Don’t have an account? ' : 'Back to  Login'"></Span>
+                        
+                        <Span [text]="isLogging ? 'Sign up' : ''" class="bold" style="color: blueviolet;font-size: 18px;"></Span>
+                    
+                    </FormattedString>
+                
+                </Label>
+    
+            </StackLayout>
+
+        </FlexboxLayout>
+
+    </ScrollView>
+
+</Page>
